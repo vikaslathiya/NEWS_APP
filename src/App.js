@@ -2,7 +2,7 @@
 import './App.css';
 import React, { useState } from 'react'
 import Navbar from './components/Header';
-import News from './components/News';
+import News from './Pages/News';
 import LoadingBar from 'react-top-loading-bar'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
