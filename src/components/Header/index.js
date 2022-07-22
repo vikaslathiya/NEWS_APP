@@ -14,7 +14,7 @@ const Navbar = () => {
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <h6>
-                            <Link className={myStyle.logo} to={`/`}>NewsApp</Link>
+                            <Link className={myStyle.logo} to={`/`}>News4You</Link>
                         </h6>
                         <Box className={myStyle.linkBox}>
                             {pages.map((page) => (

@@ -7,7 +7,7 @@ import LoadingBar from 'react-top-loading-bar'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
-  const pageSize = 12;
+  const pageSize = 15;
 
   const apikey = process.env.REACT_APP_NEWS_API
 

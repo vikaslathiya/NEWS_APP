@@ -2,19 +2,22 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const useNewsItemStyle = makeStyles(() => ({
     card: {
-        '&:hover' : {
+        '&:hover': {
             boxShadow: '0px 0px 10px 10px gray'
         }
     },
+    cardMedia: {
+        objectFit: 'fill'
+    },
     badge: {
         margin: 18,
-       "& .MuiBadge-anchorOriginTopRightRectangle" : {
-           right: 60
-       }
+        "& .MuiBadge-anchorOriginTopRightRectangle": {
+            right: 60
+        }
     },
     cardContent: {
         height: 200,
-        '& .MuiTypography-h5' : {
+        '& .MuiTypography-h5': {
             fontWeight: 600
         },
         '& .MuiTypography-body1': {
@@ -22,9 +25,9 @@ export const useNewsItemStyle = makeStyles(() => ({
         }
     },
     cardAction: {
-    '& a' : {
-        textDecoration: 'none',
-        margin: '10px'
-    }
+        '& a': {
+            textDecoration: 'none',
+            margin: '10px'
+        }
     }
 }))

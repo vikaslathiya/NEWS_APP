@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import {Badge, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import {useNewsItemStyle} from "./style";
+import noImage from '../../Assets/no-image.png'
 
 const NewsItems = (props) => {
     const {title, description, imageUrl, url, author, date, source} = props;
@@ -12,10 +13,10 @@ const NewsItems = (props) => {
                 <Card sx={{maxWidth: 345}} className={myStyle.card}>
                     <CardActionArea>
                         <CardMedia
+                            className={myStyle.cardMedia}
                             component="img"
                             height="250"
-                            // image={!imageUrl ? "https://cdn.dnaindia.com/sites/default/files/styles/half/public/2021/11/20/1006195-partial-lunar-eclipse-reuters2.jpg" : imageUrl}
-                            image={imageUrl}
+                            image={!imageUrl ? noImage : imageUrl}
                             alt={title}
                         />
                         <CardContent className={myStyle.cardContent}>
