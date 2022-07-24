@@ -10,7 +10,6 @@ export const useNewsItemStyle = makeStyles(() => ({
         objectFit: 'fill'
     },
     badge: {
-        margin: 18,
         "& .MuiBadge-anchorOriginTopRightRectangle": {
             right: 60
         }

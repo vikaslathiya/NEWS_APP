@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import NewsItems from '../../components/NewsItems/NewsItems'
 import Spinner from '../../components/Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {useSelector} from "react-redux";
+import {Grid, Typography} from "@mui/material";
 
 const News = (props) => {
     const [response, setResponse] = useState({})
@@ -106,10 +107,21 @@ const News = (props) => {
     // }
 
     return (
-        <>
-            <h1 className="text-center" style={{margin: '35px', marginTop: '80px'}}>News4You - Top Headlines
-                from {capitalizeFirstLetter(props.category)}</h1>
-            {loading && <Spinner/>}
+        <Fragment>
+            <Grid item md={12} sm={12}>
+                <Typography component={'h1'} style={{
+                    margin: '35px',
+                    marginTop: '80px',
+                    fontWeight: 600,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    fontSize: '2rem'
+                }}>
+                    News4You - Top Headlines from {capitalizeFirstLetter(props.category)}
+                </Typography>
+                {loading && <Spinner/>}
+            </Grid>
 
             <InfiniteScroll
                 dataLength={articles?.length}
@@ -117,39 +129,28 @@ const News = (props) => {
                 hasMore={(page - 1 !== totalPagesReq) && (articles?.length !== totalResults)}
                 loader={<Spinner/>}
             >
-                <div className="container">
-                    <div className="row">
-                        {articles?.map((element) => {
-                            return <div className="col-md-4" key={element.url}>
-                                <NewsItems title={element.title ? element.title.slice(0, 45) : ""}
-                                           description={element.description ? element.description.slice(0, 88) : ""}
-                                           imageUrl={element.urlToImage} url={element.url} author={element.author}
-                                           date={element.publishedAt} source={element.source.name}/>
-                            </div>
-                        })}
-                    </div>
-                </div>
+                <Grid container spacing={2} style={{marginTop: 15, padding: 6}}>
+                    {articles?.map(element => (
+                        <NewsItems title={element.title ? element.title.slice(0, 45) : ""}
+                                   description={element.description ? element.description.slice(0, 88) : ""}
+                                   imageUrl={element.urlToImage}
+                                   url={element.url} author={element.author}
+                                   date={element.publishedAt}
+                                   source={element.source.name}
+                        />
+                    ))}
+                </Grid>
             </InfiniteScroll>
-            {/* Previous and Next Buttons */}
+            {/* Previous and Next Buttons */
+            }
             {/* <div className="container d-flex justify-content-between">
                     <button disabled={page <= 1} type="button" className="btn btn-dark" onClick={handlePreviousClick}> &larr; Previous</button>
                     <button disabled={page + 1 > Math.ceil(totalResults / props.pagesize)} type="button" className="btn btn-dark" onClick={handleNextClick}>Next &rarr; </button>
-                </div> */}
-        </>
+                </div> */
+            }
+        </Fragment>
     )
 
 }
-
-
-// News.defaultProps = {
-//     country: 'in',
-//     pagesize: 6,
-//     category: 'general',
-// }
-// News.propTypes = {
-//     country: PropTypes.string,
-//     pagesize: PropTypes.number,
-//     category: PropTypes.string,
-// }
 
 export default News
